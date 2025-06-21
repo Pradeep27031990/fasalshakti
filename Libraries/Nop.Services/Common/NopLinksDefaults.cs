@@ -13,12 +13,12 @@ public static partial class NopLinksDefaults
         /// <summary>
         /// Gets the main site page
         /// </summary>
-        public static string Main => "https://www.nopcommerce.com/";
+        public static string Main => "http://fasalshakti.runasp.net/";
 
         /// <summary>
         /// Gets the boards page
         /// </summary>
-        public static string Boards => "https://www.nopcommerce.com/boards/";
+        public static string Boards => "http://fasalshakti.runasp.net/boards/";
 
         /// <summary>
         /// Gets the translations page
@@ -74,122 +74,122 @@ public static partial class NopLinksDefaults
         /// <summary>
         /// Gets a URL of the main docs page
         /// </summary>
-        public static string Main => "https://docs.nopcommerce.com/";
+        public static string Main => "http://fasalshakti.runasp.net/";
 
         /// <summary>
         /// Gets a URL of the Products docs page
         /// </summary>
-        public static string Products => "https://docs.nopcommerce.com/running-your-store/catalog/products/index.html";
+        public static string Products => "http://fasalshakti.runasp.net/running-your-store/catalog/products/index.html";
 
         /// <summary>
         /// Gets a URL of the Categories docs page
         /// </summary>
-        public static string Categories => "https://docs.nopcommerce.com/running-your-store/catalog/categories.html";
+        public static string Categories => "http://fasalshakti.runasp.net/running-your-store/catalog/categories.html";
 
         /// <summary>
         /// Gets a URL of the manufacturers docs page
         /// </summary>
-        public static string Manufacturers => "https://docs.nopcommerce.com/running-your-store/catalog/manufacturers.html";
+        public static string Manufacturers => "http://fasalshakti.runasp.net/running-your-store/catalog/manufacturers.html";
 
         /// <summary>
         /// Gets a URL of the product reviews docs page
         /// </summary>
-        public static string ProductReviews => "https://docs.nopcommerce.com/running-your-store/catalog/products/product-reviews.html";
+        public static string ProductReviews => "http://fasalshakti.runasp.net/running-your-store/catalog/products/product-reviews.html";
 
         /// <summary>
         /// Gets a URL of the product tags docs page
         /// </summary>
-        public static string ProductTags => "https://docs.nopcommerce.com/running-your-store/catalog/products/product-tags.html";
+        public static string ProductTags => "http://fasalshakti.runasp.net/running-your-store/catalog/products/product-tags.html";
 
         /// <summary>
         /// Gets a URL of the product attributes docs page
         /// </summary>
-        public static string ProductAttributes => "https://docs.nopcommerce.com/running-your-store/catalog/products/product-attributes.html";
+        public static string ProductAttributes => "http://fasalshakti.runasp.net/running-your-store/catalog/products/product-attributes.html";
 
         /// <summary>
         /// Gets a URL of the specification attributes docs page
         /// </summary>
-        public static string SpecificationAttributes => "https://docs.nopcommerce.com/running-your-store/catalog/products/specification-attributes.html";
+        public static string SpecificationAttributes => "http://fasalshakti.runasp.net/running-your-store/catalog/products/specification-attributes.html";
 
         /// <summary>
         /// Gets a URL of the checkout attributes docs page
         /// </summary>
-        public static string CheckoutAttributes => "https://docs.nopcommerce.com/running-your-store/order-management/checkout-attributes.html";
+        public static string CheckoutAttributes => "http://fasalshakti.runasp.net/running-your-store/order-management/checkout-attributes.html";
 
         /// <summary>
         /// Gets a URL of the orders docs page
         /// </summary>
-        public static string Orders => "https://docs.nopcommerce.com/running-your-store/order-management/orders.html";
+        public static string Orders => "http://fasalshakti.runasp.net/running-your-store/order-management/orders.html";
 
         /// <summary>
         /// Gets a URL of the shipping management docs page
         /// </summary>
-        public static string ShippingManagement => "https://docs.nopcommerce.com/running-your-store/order-management/shipping-management.html";
+        public static string ShippingManagement => "http://fasalshakti.runasp.net/running-your-store/order-management/shipping-management.html";
 
         /// <summary>
         /// Gets a URL of the return requests docs page
         /// </summary>
-        public static string ReturnRequests => "https://docs.nopcommerce.com/running-your-store/order-management/return-requests.html";
+        public static string ReturnRequests => "http://fasalshakti.runasp.net/running-your-store/order-management/return-requests.html";
 
         /// <summary>
         /// Gets a URL of the recurring payments docs page
         /// </summary>
-        public static string RecurringPayments => "https://docs.nopcommerce.com/running-your-store/catalog/products/recurring-products.html";
+        public static string RecurringPayments => "http://fasalshakti.runasp.net/running-your-store/catalog/products/recurring-products.html";
 
         /// <summary>
         /// Gets a URL of the shopping carts and wishlists docs page
         /// </summary>
-        public static string ShoppingCartsAndWishlists => "https://docs.nopcommerce.com/running-your-store/order-management/shopping-carts-and-wishlists.html";
+        public static string ShoppingCartsAndWishlists => "http://fasalshakti.runasp.net/running-your-store/order-management/shopping-carts-and-wishlists.html";
 
         /// <summary>
         /// Gets a URL of the gift cards docs page
         /// </summary>
-        public static string GiftCards => "https://docs.nopcommerce.com/running-your-store/promotional-tools/gift-cards.html";
+        public static string GiftCards => "http://fasalshakti.runasp.net/running-your-store/promotional-tools/gift-cards.html";
 
         /// <summary>
         /// Gets a URL of the customers docs page
         /// </summary>
-        public static string Customers => "https://docs.nopcommerce.com/running-your-store/customer-management/managing-customers.html";
+        public static string Customers => "http://fasalshakti.runasp.net/running-your-store/customer-management/managing-customers.html";
 
         /// <summary>
         /// Gets a URL of the customer roles docs page
         /// </summary>
-        public static string CustomerRoles => "https://docs.nopcommerce.com/running-your-store/customer-management/customer-roles.html";
+        public static string CustomerRoles => "http://fasalshakti.runasp.net/running-your-store/customer-management/customer-roles.html";
 
         /// <summary>
         /// Gets a URL of the online customers docs page
         /// </summary>
-        public static string OnlineCustomers => "https://docs.nopcommerce.com/running-your-store/customer-management/online-customers.html";
+        public static string OnlineCustomers => "http://fasalshakti.runasp.net/running-your-store/customer-management/online-customers.html";
 
         /// <summary>
         /// Gets a URL of the vendor management docs page
         /// </summary>
-        public static string VendorManagement => "https://docs.nopcommerce.com/running-your-store/vendor-management.html";
+        public static string VendorManagement => "http://fasalshakti.runasp.net/running-your-store/vendor-management.html";
 
         /// <summary>
         /// Gets a URL of the activity log docs page
         /// </summary>
-        public static string ActivityLog => "https://docs.nopcommerce.com/running-your-store/customer-management/activity-log.html";
+        public static string ActivityLog => "http://fasalshakti.runasp.net/running-your-store/customer-management/activity-log.html";
 
         /// <summary>
         /// Gets a URL of the GDPR docs page
         /// </summary>
-        public static string Gdpr => "https://docs.nopcommerce.com/getting-started/advanced-configuration/gdpr-settings.html";
+        public static string Gdpr => "http://fasalshakti.runasp.net/getting-started/advanced-configuration/gdpr-settings.html";
 
         /// <summary>
         /// Gets a URL of the discounts docs page
         /// </summary>
-        public static string Discounts => "https://docs.nopcommerce.com/running-your-store/promotional-tools/discounts.html";
+        public static string Discounts => "http://fasalshakti.runasp.net/running-your-store/promotional-tools/discounts.html";
 
         /// <summary>
         /// Gets a URL of the affiliates docs page
         /// </summary>
-        public static string Affiliates => "https://docs.nopcommerce.com/running-your-store/promotional-tools/affiliates.html";
+        public static string Affiliates => "http://fasalshakti.runasp.net/running-your-store/promotional-tools/affiliates.html";
 
         /// <summary>
         /// Gets a URL of the email campaigns docs page
         /// </summary>
-        public static string EmailCampaigns => "https://docs.nopcommerce.com/running-your-store/promotional-tools/email-campaigns.html";
+        public static string EmailCampaigns => "http://fasalshakti.runasp.net/running-your-store/promotional-tools/email-campaigns.html";
 
         /// <summary>
         /// Gets a URL of the topics and pages docs page
@@ -199,42 +199,42 @@ public static partial class NopLinksDefaults
         /// <summary>
         /// Gets a URL of the message templates docs page
         /// </summary>
-        public static string MessageTemplates => "https://docs.nopcommerce.com/running-your-store/content-management/message-templates.html";
+        public static string MessageTemplates => "http://fasalshakti.runasp.net/running-your-store/content-management/message-templates.html";
 
         /// <summary>
         /// Gets a URL of the news docs page
         /// </summary>
-        public static string News => "https://docs.nopcommerce.com/running-your-store/content-management/news.html";
+        public static string News => "http://fasalshakti.runasp.net/running-your-store/content-management/news.html";
 
         /// <summary>
         /// Gets a URL of the blog docs page
         /// </summary>
-        public static string Blog => "https://docs.nopcommerce.com/running-your-store/content-management/blog.html";
+        public static string Blog => "http://fasalshakti.runasp.net/running-your-store/content-management/blog.html";
 
         /// <summary>
         /// Gets a URL of the polls docs page
         /// </summary>
-        public static string Polls => "https://docs.nopcommerce.com/running-your-store/content-management/polls.html";
+        public static string Polls => "http://fasalshakti.runasp.net/running-your-store/content-management/polls.html";
 
         /// <summary>
         /// Gets a URL of the forums docs page
         /// </summary>
-        public static string Forums => "https://docs.nopcommerce.com/running-your-store/content-management/forums.html";
+        public static string Forums => "http://fasalshakti.runasp.net/running-your-store/content-management/forums.html";
 
         /// <summary>
         /// Gets a URL of the email accounts docs page
         /// </summary>
-        public static string EmailAccounts => "https://docs.nopcommerce.com/getting-started/email-accounts.html";
+        public static string EmailAccounts => "http://fasalshakti.runasp.net/getting-started/email-accounts.html";
 
         /// <summary>
         /// Gets a URL of the multistore docs page
         /// </summary>
-        public static string MultiStore => "https://docs.nopcommerce.com/getting-started/advanced-configuration/multi-store.html";
+        public static string MultiStore => "http://fasalshakti.runasp.net/getting-started/advanced-configuration/multi-store.html";
 
         /// <summary>
         /// Gets a URL of the countries and states docs page
         /// </summary>
-        public static string CountriesStates => "https://docs.nopcommerce.com/getting-started/configure-shipping/advanced-configuration/countries-states.html";
+        public static string CountriesStates => "http://fasalshakti.runasp.net/getting-started/configure-shipping/advanced-configuration/countries-states.html";
 
         /// <summary>
         /// Gets a URL of the localization docs page
