@@ -1,5 +1,4 @@
-﻿using System.Net;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Primitives;
 using Nop.Core;
 using Nop.Core.Domain.Catalog;
@@ -20,6 +19,8 @@ using Nop.Web.Factories;
 using Nop.Web.Framework.Controllers;
 using Nop.Web.Framework.Mvc.Filters;
 using Nop.Web.Models.Vendors;
+using System.Net;
+using System.Text.RegularExpressions;
 
 namespace Nop.Web.Controllers;
 
@@ -272,6 +273,20 @@ public partial class VendorController : BasePublicController
 
         //vendor attributes
         var vendorAttributesXml = await ParseVendorAttributesAsync(form);
+
+
+        // GST Number validation
+        var gstAttributeId = 1;
+        var gstValue = form[$"vendor_attribute_{gstAttributeId}"];
+        if (!string.IsNullOrEmpty(gstValue))
+        {
+            var gstRegex = new Regex(@"^[0-9]{2}[A-Z]{5}[0-9]{4}[A-Z]{1}[1-9A-Z]{1}Z[0-9A-Z]{1}$");
+            if (!gstRegex.IsMatch(gstValue))
+            {
+                ModelState.AddModelError("", "Invalid GST Number format. Example: 22ABCDE1234F1Z5");
+            }
+        }
+        // built-in vendor attribute warnings
         var warnings = (await _vendorAttributeParser.GetAttributeWarningsAsync(vendorAttributesXml)).ToList();
         foreach (var warning in warnings)
         {
