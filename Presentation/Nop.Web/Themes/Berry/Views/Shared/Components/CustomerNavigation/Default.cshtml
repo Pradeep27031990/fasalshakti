@@ -1,0 +1,20 @@
+﻿@model CustomerNavigationModel
+<div class="block block-account-navigation">
+    <div class="title" id="myAccount">
+        <h4 data-toggle="collapse" data-target="#myAccountNavigation" aria-expanded="true" aria-controls="collapseOne">
+            @T("Account.Navigation")
+        </h4>
+    </div>
+    <div class="listbox collapse show" id="myAccountNavigation" aria-labelledby="myAccount">
+        <ul class="list">
+            @await Component.InvokeAsync(typeof(WidgetViewComponent), new { widgetZone = PublicWidgetZones.AccountNavigationBefore })
+            @foreach (var item in Model.CustomerNavigationItems)
+            {
+                <li class="@item.ItemClass">
+                    <a href="@Url.RouteUrl(item.RouteName)" class="@(Model.SelectedTab == item.Tab ? "active" : "inactive")">@(item.Title)</a>
+                </li>
+            }
+            @await Component.InvokeAsync(typeof(WidgetViewComponent), new { widgetZone = PublicWidgetZones.AccountNavigationAfter })
+        </ul>
+    </div>
+</div>

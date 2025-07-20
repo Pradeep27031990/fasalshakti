@@ -138,7 +138,7 @@ public class AvalaraController : BasePluginController
         await _baseAdminModelFactory.PrepareStatesAndProvincesAsync(model.TestAddress.AvailableStates, model.TestAddress.CountryId);
 
         //prepare tax transaction log model
-        model.TaxTransactionLogSearchModel.SetGridPageSize();
+        //model.TaxTransactionLogSearchModel.SetGridPageSize();
 
         //get active account companies
         var activeCompanies = model.IsConfigured ? await _avalaraTaxManager.GetAccountCompaniesAsync() : null;

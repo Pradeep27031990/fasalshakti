@@ -1,0 +1,16 @@
+﻿@model PublicModel
+
+@if (Model.EnableImageLazyLoad)
+{
+    NopHtml.AppendScriptParts(ResourceLocation.Footer, "/Plugins/NopStation.Plugin.Widgets.Berry/Content/js/lazyload.js");
+    <script asp-location="Footer">
+        new LazyLoad();
+        $(document).ajaxStop(function () {
+            new LazyLoad();
+        });
+    </script>
+}
+
+<style>
+    @Html.Raw(Model.CustomCss)
+</style>

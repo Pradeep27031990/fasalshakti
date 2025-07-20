@@ -1,0 +1,25 @@
+﻿@model VendorNavigationModel
+@if (Model.Vendors.Count > 0)
+{
+<div class="block block-vendor-navigation">
+    <div class="title" id="headingVendoe">
+        <h4 data-toggle="collapse" data-target="#vendorNavigation" aria-expanded="false" aria-controls="collapseOne" class="collapsed">@T("Vendors")</h4>
+    </div>
+    <div class="listbox collapse" id="vendorNavigation" aria-labelledby="headingVendoe">
+        <ul class="list">
+            @foreach (var vendor in Model.Vendors)
+            {
+                <li>
+                    <a href="@Url.RouteUrl("Vendor", new { SeName = vendor.SeName })">@vendor.Name</a>
+                </li>
+            }
+        </ul>
+        @if (Model.TotalVendors > Model.Vendors.Count)
+        {
+            <div class="view-all">
+                <a class="button-2 button-black" href="@Url.RouteUrl("VendorList")">@T("Vendors.ViewAll")</a>
+            </div>
+        }
+    </div>
+</div>
+}

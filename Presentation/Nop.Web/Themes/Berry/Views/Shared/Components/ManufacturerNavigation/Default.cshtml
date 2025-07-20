@@ -1,0 +1,25 @@
+﻿@model ManufacturerNavigationModel
+@if (Model.Manufacturers.Count > 0)
+{
+    <div class="block block-manufacturer-navigation">
+        <div class="title" id="headingTwo">
+            <h4 data-toggle="collapse" data-target="#menufaturerNavigation" aria-expanded="false" aria-controls="collapseOne" class="collapsed">@T("Manufacturers")</h4>
+        </div>
+        <div class="listbox collapse" id="menufaturerNavigation" aria-labelledby="headingTow">
+            <ul class="list">
+                @foreach (var manufacturer in Model.Manufacturers)
+                {
+                    <li class="@(manufacturer.IsActive ? "active" : "inactive")">
+                        <a href="@Url.RouteUrl("Manufacturer", new { SeName = manufacturer.SeName })">@manufacturer.Name</a>
+                    </li>
+                }
+            </ul>
+            @if (Model.TotalManufacturers > Model.Manufacturers.Count)
+            {
+                <div class="view-all">
+                    <a class="button-2 button-black" href="@Url.RouteUrl("ManufacturerList")">@T("Manufacturers.ViewAll")</a>
+                </div>
+            }
+        </div>
+    </div>
+}

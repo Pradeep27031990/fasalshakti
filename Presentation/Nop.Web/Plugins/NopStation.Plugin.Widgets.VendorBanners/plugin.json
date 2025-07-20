@@ -1,0 +1,12 @@
+﻿{
+  "Group": "Nop-Station",
+  "FriendlyName": "Nop-Station Vendor Banner",
+  "SystemName": "NopStation.Plugin.Widgets.VendorBanners",
+  "Version": "4.80.1.0",
+  "SupportedVersions": [ "4.80" ],
+  "Author": "Nop-Station Team",
+  "DisplayOrder": 1,
+  "FileName": "NopStation.Plugin.Widgets.VendorBanners.dll",
+  "Description": "This plugin allows to display vendor banner in vendor details page.",
+  "DependsOnSystemNames": [ "NopStation.Core" ]
+}

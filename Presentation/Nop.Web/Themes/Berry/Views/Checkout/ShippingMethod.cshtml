@@ -1,0 +1,93 @@
+﻿@model CheckoutShippingMethodModel
+@using Nop.Core.Domain.Seo
+@using Nop.Core.Domain.Common
+@using Nop.Core
+@using Nop.Services.Configuration
+@using Nop.Services.Media
+@inject ISettingService settingService
+@inject IPictureService pictureService
+@inject IStoreContext storeContext
+@inject Nop.Core.IWebHelper webHelper
+@inject SeoSettings seoSettings
+@inject CommonSettings commonSettings
+@{
+    Layout = "_ColumnsOne";
+
+    //title
+    NopHtml.AddTitleParts(T("PageTitle.Checkout").Text);
+    //page class
+    NopHtml.AppendPageCssClassParts("html-checkout-page");
+    NopHtml.AppendPageCssClassParts("html-shipping-method-page");
+}
+@{
+    var store = await storeContext.GetCurrentStoreAsync();
+    var breadcrumbBackgroundPictureId = await settingService.GetSettingByKeyAsync<int>("berrysettings.breadcrumbbackgroundpictureid", storeId: store.Id, loadSharedValueIfNotFound: true);
+    var breadcrumbBackgroundPictureUrl = await pictureService.GetPictureUrlAsync(breadcrumbBackgroundPictureId);
+}
+@section Breadcrumb {
+    <div class="breadcrumb" style="background-image: url('@breadcrumbBackgroundPictureUrl');">
+        <div class="page-title">
+            <h1>@T("Checkout.SelectShippingMethod")</h1>
+        </div>
+    </div>
+}
+
+<div class="page custom-container-fluid checkout-page shipping-method-page">
+
+    @await Component.InvokeAsync(typeof(CheckoutProgressViewComponent), new { step = CheckoutProgressStep.Shipping })
+    <div class="page-body checkout-data">
+        <div class="section shipping-method mb-5">
+            <form asp-route="CheckoutShippingMethod" method="post">
+                @await Component.InvokeAsync(typeof(WidgetViewComponent), new { widgetZone = PublicWidgetZones.CheckoutShippingMethodTop })
+                @if (Model.Warnings.Count == 0)
+                {
+                    <ul class="method-list">
+                        @for (var i = 0; i < Model.ShippingMethods.Count; i++)
+                        {
+                            var shippingMethod = Model.ShippingMethods[i];
+                            <li>
+                                <div class="method-name">
+                                    <input id="shippingoption_@(i)" type="radio" name="shippingoption" value="@(shippingMethod.Name)___@(shippingMethod.ShippingRateComputationMethodSystemName)" checked="@shippingMethod.Selected" />
+                                    <label for="shippingoption_@(i)">@T("Checkout.SelectShippingMethod.MethodAndFee", shippingMethod.Name, shippingMethod.Fee)</label>
+                                </div>
+                                @if (!string.IsNullOrEmpty(shippingMethod.Description))
+                                {
+                                    <div class="method-description">
+                                        @Html.Raw(shippingMethod.Description)
+                                    </div>
+                                }
+                            </li>
+                        }
+                    </ul>
+                    if (Model.NotifyCustomerAboutShippingFromMultipleLocations)
+                    {
+                        <div class="multiple-locations">
+                            @T("Checkout.ShippingMethod.ShippingFromMultipleLocations")
+                        </div>
+                    }
+                    <div class="buttons text-left">
+                        <input type="submit" name="nextstep" value="@T("Checkout.NextButton")" class="button-2 shipping-method-next-step-button" />
+                    </div>
+                }
+                else
+                {
+                    <div class="message-error">
+                        <ul>
+                            @foreach (var warning in Model.Warnings)
+                            {
+                                <li>@warning</li>
+                            }
+                        </ul>
+                    </div>
+                }
+                @await Component.InvokeAsync(typeof(WidgetViewComponent), new { widgetZone = PublicWidgetZones.CheckoutShippingMethodBottom })
+            </form>
+        </div>
+        <div class="section order-summary">
+            <div class="title">
+                <strong>@T("Checkout.OrderSummary")</strong>
+            </div>
+            @await Component.InvokeAsync(typeof(OrderSummaryViewComponent))
+        </div>
+    </div>
+</div>

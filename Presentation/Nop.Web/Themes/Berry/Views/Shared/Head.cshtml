@@ -1,0 +1,52 @@
+﻿@using Nop.Core
+@using Nop.Services.Helpers
+@using Nop.Web.Framework.UI
+@using Nop.Core.Domain.Catalog
+@using Nop.Core.Infrastructure
+
+@inject CatalogSettings catalogSettings
+@inject IWorkContext workContext
+@inject IThemeContext themeContext
+@inject IUserAgentHelper userAgentHelper
+@inject IStoreContext storeContext
+@inject INopFileProvider nopFileProvider
+@{
+    var themeName = await themeContext.GetWorkingThemeNameAsync();
+    var storeId = (await storeContext.GetCurrentStoreAsync()).Id;
+    var customCssPath = $"~/Themes/{themeName}/Content/css/styles.default-{storeId}.css";
+
+    if (nopFileProvider.FileExists(nopFileProvider.MapPath(customCssPath)))
+        NopHtml.AppendCssFileParts(customCssPath, excludeFromBundle: true);
+
+    var supportRtl =(await workContext.GetWorkingLanguageAsync()).Rtl;
+
+    //add main CSS file
+    if (supportRtl)
+    {
+        NopHtml.AppendCssFileParts($"/Themes/{themeName}/Content/css/responsive.rtl.css", string.Empty);
+        NopHtml.AppendCssFileParts($"/Themes/{themeName}/Content/css/styles.rtl.css", string.Empty);
+        NopHtml.AppendCssFileParts($"/Themes/{themeName}/Content/css/rtl/owl.carousel.css", string.Empty);
+     //   NopHtml.AppendCssFileParts($"/Themes/{themeName}/Content/css/bootstrap.min.rtl.css", string.Empty);
+    }
+    else
+    {
+        NopHtml.AppendCssFileParts($"/Themes/{themeName}/Content/css/responsive.css", string.Empty);
+        NopHtml.AppendCssFileParts($"/Themes/{themeName}/Content/css/styles.css", string.Empty);
+        NopHtml.AppendCssFileParts($"/Themes/{themeName}/Content/css/owl.carousel.css", string.Empty);
+    }
+
+    NopHtml.AppendCssFileParts($"/Themes/{themeName}/Content/css/all-fonts.css", string.Empty);
+    NopHtml.AppendCssFileParts($"/Themes/{themeName}/Content/css/zoomple.css", string.Empty);
+    NopHtml.AppendCssFileParts($"/Themes/{themeName}/Content/css/bootstrap.min.css", string.Empty);
+    //font-awsome 5 css
+    NopHtml.AppendCssFileParts($"/Themes/{themeName}/Content/css/all.min.css", string.Empty);
+    NopHtml.AppendCssFileParts($"/Themes/{themeName}/Content/css/animate.css", string.Empty);
+    NopHtml.AppendCssFileParts($"/lib_npm/jquery-ui-dist/jquery-ui.min.css", string.Empty);
+    NopHtml.AppendCssFileParts($"https://fonts.googleapis.com/css?family=Barlow:300,400,500,700", string.Empty, excludeFromBundle: true);
+
+    //add swiper css file
+    if (catalogSettings.DisplayAllPicturesOnCatalogPages)
+    {
+        NopHtml.AppendCssFileParts("~/lib_npm/swiper/swiper-bundle.min.css");
+    }
+}

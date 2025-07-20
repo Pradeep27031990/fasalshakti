@@ -1,0 +1,92 @@
+﻿@model ContactVendorModel
+@using Nop.Core.Domain.Seo
+@using Nop.Core.Domain.Common
+@using Nop.Core
+@using Nop.Services.Configuration
+@using Nop.Services.Media
+@inject ISettingService settingService
+@inject IPictureService pictureService
+@inject IStoreContext storeContext
+@inject Nop.Core.IWebHelper webHelper
+@inject SeoSettings seoSettings
+@inject CommonSettings commonSettings
+@{
+    Layout = "_ColumnsOne";
+
+    //title
+    NopHtml.AddTitleParts(T("PageTitle.ContactVendor", Model.VendorName).Text);
+    //page class
+    NopHtml.AppendPageCssClassParts("html-contact-page");
+}
+
+@{
+    var store = await storeContext.GetCurrentStoreAsync();
+    var breadcrumbBackgroundPictureId = await settingService.GetSettingByKeyAsync<int>("berrysettings.breadcrumbbackgroundpictureid", storeId: store.Id, loadSharedValueIfNotFound: true);
+    var breadcrumbBackgroundPictureUrl = await pictureService.GetPictureUrlAsync(breadcrumbBackgroundPictureId);
+}
+
+@section breadcrumb{
+    <div class="breadcrumb" style="background-image: url('@breadcrumbBackgroundPictureUrl');">
+        <div class="page-title">
+            <h1>@T("PageTitle.ContactVendor", Model.VendorName)</h1>
+        </div>
+    </div>
+}
+<div class="page contact-page custom-container-fluid">
+    <div class="page-body">
+        @await Component.InvokeAsync(typeof(WidgetViewComponent), new { widgetZone = PublicWidgetZones.ContactVendorTop })
+        @if (Model.SuccessfullySent)
+        {
+            <div class="result">
+                @Model.Result
+            </div>
+        }
+        else
+        {
+            <form asp-route="ContactVendor" method="post">
+                <div asp-validation-summary="ModelOnly" class="message-error"></div>
+                <div class="fieldset">
+                    <div class="form-fields">
+                        <div class="inputs">
+                            <label asp-for="FullName" asp-postfix=":"></label>
+                            <input asp-for="FullName" placeholder="@T("ContactVendor.FullName.Hint")" class="fullname" />
+                            <nop-required />
+                            <span asp-validation-for="FullName"></span>
+                        </div>
+                        <div class="inputs">
+                            <label asp-for="Email" asp-postfix=":"></label>
+                            <input asp-for="Email" placeholder="@T("ContactVendor.Email.Hint")" class="email" />
+                            <nop-required />
+                            <span asp-validation-for="Email"></span>
+                        </div>
+                        @if (Model.SubjectEnabled)
+                        {
+                            <div class="inputs">
+                                <label asp-for="Subject" asp-postfix=":"></label>
+                                <input asp-for="Subject" placeholder="@T("ContactVendor.Subject.Hint")" class="subject" />
+                                <nop-required />
+                                <span asp-validation-for="Subject"></span>
+                            </div>
+                        }
+                        <div class="inputs">
+                            <label asp-for="Enquiry" asp-postfix=":"></label>
+                            <textarea asp-for="Enquiry" placeholder="@T("ContactVendor.Enquiry.Hint")" class="enquiry"></textarea>
+                            <nop-required />
+                            <span asp-validation-for="Enquiry"></span>
+                        </div>
+                        @if (Model.DisplayCaptcha)
+                        {
+                            <div class="captcha-box">
+                                <nop-captcha />
+                            </div>
+                        }
+                    </div>
+                </div>
+                <div class="buttons text-left">
+                    <input type="submit" name="send-email" class="button-2 contact-us-button" value="@T("ContactVendor.Button")" />
+                </div>
+            </form>
+        }
+        @await Component.InvokeAsync(typeof(WidgetViewComponent), new { widgetZone = PublicWidgetZones.ContactVendorBottom })
+    </div>
+</div>

@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Nop.Plugin.Tax.Avalara.Models.ItemClassification;
-using Nop.Plugin.Tax.Avalara.Models.Log;
+//using Nop.Plugin.Tax.Avalara.Models.log;
 using Nop.Web.Areas.Admin.Models.Common;
 using Nop.Web.Framework.Models;
 using Nop.Web.Framework.Mvc;
@@ -21,7 +21,7 @@ public record ConfigurationModel : BaseNopModel, IAclSupportedModel
         TestAddress = new AddressModel();
         Companies = new List<SelectListItem>();
         TaxOriginAddressTypes = new List<SelectListItem>();
-        TaxTransactionLogSearchModel = new TaxTransactionLogSearchModel();
+        //TaxTransactionLogSearchModel = new TaxTransactionLogSearchModel();
         ItemClassificationSearchModel = new ItemClassificationSearchModel();
         SelectedCustomerRoleIds = new List<int>();
         AvailableCustomerRoles = new List<SelectListItem>();
@@ -59,7 +59,7 @@ public record ConfigurationModel : BaseNopModel, IAclSupportedModel
 
     public string TestTaxResult { get; set; }
 
-    public TaxTransactionLogSearchModel TaxTransactionLogSearchModel { get; set; }
+   // public TaxTransactionLogSearchModel TaxTransactionLogSearchModel { get; set; }
 
     public bool HideGeneralBlock { get; set; }
 

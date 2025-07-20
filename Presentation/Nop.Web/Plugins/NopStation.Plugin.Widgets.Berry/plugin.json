@@ -1,0 +1,12 @@
+﻿{
+  "Group": "Nop-Station",
+  "FriendlyName": "Nop-Station Berry Theme",
+  "SystemName": "NopStation.Theme.Berry",
+  "Version": "4.80.1.1",
+  "SupportedVersions": [ "4.80" ],
+  "Author": "Nop-Station Team",
+  "DisplayOrder": 1,
+  "FileName": "NopStation.Plugin.Widgets.Berry.dll",
+  "Description": "This plugin allows to configure NopStation Berry theme.",
+  "DependsOnSystemNames": [ "NopStation.Core" ]
+}

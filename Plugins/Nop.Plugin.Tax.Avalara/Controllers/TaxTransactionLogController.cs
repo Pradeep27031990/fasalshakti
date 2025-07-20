@@ -1,5 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Nop.Plugin.Tax.Avalara.Models.Log;
+//using Nop.Plugin.Tax.Avalara.Models.Log;
 using Nop.Plugin.Tax.Avalara.Services;
 using Nop.Services.Customers;
 using Nop.Services.Helpers;
@@ -52,35 +52,35 @@ public class TaxTransactionLogController : BaseAdminController
 
     [HttpPost]
     [CheckPermission(StandardPermission.Configuration.MANAGE_TAX_SETTINGS)]
-    public async Task<IActionResult> LogList(TaxTransactionLogSearchModel searchModel)
-    {
-        //prepare filter parameters
-        var createdFromValue = searchModel.CreatedFrom.HasValue
-            ? (DateTime?)_dateTimeHelper.ConvertToUtcTime(searchModel.CreatedFrom.Value, await _dateTimeHelper.GetCurrentTimeZoneAsync())
-            : null;
-        var createdToValue = searchModel.CreatedTo.HasValue
-            ? (DateTime?)_dateTimeHelper.ConvertToUtcTime(searchModel.CreatedTo.Value, await _dateTimeHelper.GetCurrentTimeZoneAsync()).AddDays(1)
-            : null;
+    //public async Task<IActionResult> LogList(TaxTransactionLogSearchModel searchModel)
+    //{
+    //    //prepare filter parameters
+    //    var createdFromValue = searchModel.CreatedFrom.HasValue
+    //        ? (DateTime?)_dateTimeHelper.ConvertToUtcTime(searchModel.CreatedFrom.Value, await _dateTimeHelper.GetCurrentTimeZoneAsync())
+    //        : null;
+    //    var createdToValue = searchModel.CreatedTo.HasValue
+    //        ? (DateTime?)_dateTimeHelper.ConvertToUtcTime(searchModel.CreatedTo.Value, await _dateTimeHelper.GetCurrentTimeZoneAsync()).AddDays(1)
+    //        : null;
 
-        //get tax transaction log
-        var taxtransactionLog = await _taxTransactionLogService.GetTaxTransactionLogAsync(createdFromUtc: createdFromValue, createdToUtc: createdToValue,
-            pageIndex: searchModel.Page - 1, pageSize: searchModel.PageSize);
+    //    //get tax transaction log
+    //    var taxtransactionLog = await _taxTransactionLogService.GetTaxTransactionLogAsync(createdFromUtc: createdFromValue, createdToUtc: createdToValue,
+    //        pageIndex: searchModel.Page - 1, pageSize: searchModel.PageSize);
 
-        //prepare grid model
-        var model = await new TaxTransactionLogListModel().PrepareToGridAsync(searchModel, taxtransactionLog, () =>
-        {
-            return taxtransactionLog.SelectAwait(async logItem => new TaxTransactionLogModel
-            {
-                Id = logItem.Id,
-                StatusCode = logItem.StatusCode,
-                Url = logItem.Url,
-                CustomerId = logItem.CustomerId,
-                CreatedDate = await _dateTimeHelper.ConvertToUserTimeAsync(logItem.CreatedDateUtc, DateTimeKind.Utc)
-            });
-        });
+    //    //prepare grid model
+    //    var model = await new TaxTransactionLogListModel().PrepareToGridAsync(searchModel, taxtransactionLog, () =>
+    //    {
+    //        return taxtransactionLog.SelectAwait(async logItem => new TaxTransactionLogModel
+    //        {
+    //            Id = logItem.Id,
+    //            StatusCode = logItem.StatusCode,
+    //            Url = logItem.Url,
+    //            CustomerId = logItem.CustomerId,
+    //            CreatedDate = await _dateTimeHelper.ConvertToUserTimeAsync(logItem.CreatedDateUtc, DateTimeKind.Utc)
+    //        });
+    //    });
 
-        return Json(model);
-    }
+    //    return Json(model);
+    //}
 
     [HttpPost]
     [CheckPermission(StandardPermission.Configuration.MANAGE_TAX_SETTINGS)]
@@ -102,19 +102,20 @@ public class TaxTransactionLogController : BaseAdminController
         if (logItem == null)
             return RedirectToAction("Configure", "Avalara");
 
-        var model = new TaxTransactionLogModel
-        {
-            Id = logItem.Id,
-            StatusCode = logItem.StatusCode,
-            Url = logItem.Url,
-            RequestMessage = _htmlFormatter.FormatText(logItem.RequestMessage, false, true, false, false, false, false),
-            ResponseMessage = _htmlFormatter.FormatText(logItem.ResponseMessage, false, true, false, false, false, false),
-            CustomerId = logItem.CustomerId,
-            CustomerEmail = (await _customerService.GetCustomerByIdAsync(logItem.CustomerId))?.Email,
-            CreatedDate = await _dateTimeHelper.ConvertToUserTimeAsync(logItem.CreatedDateUtc, DateTimeKind.Utc)
-        };
+        //var model = new TaxTransactionLogModel
+        //{
+        //    Id = logItem.Id,
+        //    StatusCode = logItem.StatusCode,
+        //    Url = logItem.Url,
+        //    RequestMessage = _htmlFormatter.FormatText(logItem.RequestMessage, false, true, false, false, false, false),
+        //    ResponseMessage = _htmlFormatter.FormatText(logItem.ResponseMessage, false, true, false, false, false, false),
+        //    CustomerId = logItem.CustomerId,
+        //    CustomerEmail = (await _customerService.GetCustomerByIdAsync(logItem.CustomerId))?.Email,
+        //    CreatedDate = await _dateTimeHelper.ConvertToUserTimeAsync(logItem.CreatedDateUtc, DateTimeKind.Utc)
+        //};
 
-        return View("~/Plugins/Tax.Avalara/Views/Log/View.cshtml", model);
+        // return View("~/Plugins/Tax.Avalara/Views/Log/View.cshtml", model);
+        return View();
     }
 
     [HttpPost]

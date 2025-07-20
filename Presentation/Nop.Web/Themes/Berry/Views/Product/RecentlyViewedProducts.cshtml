@@ -1,0 +1,50 @@
+﻿@model IList<ProductOverviewModel>
+@using Nop.Core.Domain.Seo
+@using Nop.Core.Domain.Common
+@using Nop.Core
+@using Nop.Services.Configuration
+@using Nop.Services.Media
+@inject ISettingService settingService
+@inject IPictureService pictureService
+@inject IStoreContext storeContext
+@inject Nop.Core.IWebHelper webHelper
+@inject SeoSettings seoSettings
+@inject CommonSettings commonSettings
+@{
+    Layout = "_ColumnsTwo";
+
+    //title
+    NopHtml.AddTitleParts(T("PageTitle.RecentlyViewedProducts").Text);
+    //page class
+    NopHtml.AppendPageCssClassParts("html-recently-viewed-products-page");
+}
+
+@{
+    var store = await storeContext.GetCurrentStoreAsync();
+    var breadcrumbBackgroundPictureId = await settingService.GetSettingByKeyAsync<int>("berrysettings.breadcrumbbackgroundpictureid", storeId: store.Id, loadSharedValueIfNotFound: true);
+    var breadcrumbBackgroundPictureUrl = await pictureService.GetPictureUrlAsync(breadcrumbBackgroundPictureId);
+}
+@section Breadcrumb {
+    <div class="breadcrumb" style="background-image: url('@breadcrumbBackgroundPictureUrl');">
+        <div class="page-title">
+            <h1>@T("Products.RecentlyViewedProducts")</h1>
+        </div>
+    </div>
+}
+<div class="page recently-viewed-products-page">
+    <div class="page-body">
+        @if (Model.Count > 0)
+        {
+            <div class="product-grid">
+                <div class="item-grid">
+                    @foreach (var product in Model)
+                    {
+                        <div class="item-box">
+                            @await Html.PartialAsync("_ProductBox", product)
+                        </div>
+                    }
+                </div>
+            </div>
+        }
+    </div>
+</div>

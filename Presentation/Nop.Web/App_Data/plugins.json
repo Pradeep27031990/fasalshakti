@@ -2,7 +2,56 @@
   "InstalledPluginNames": [
     "Obsolete field, using only for compatibility"
   ],
-  "InstalledPlugins": [],
+  "InstalledPlugins": [
+    {
+      "SystemName": "NopStation.Core",
+      "Version": "4.80.1.0"
+    },
+    {
+      "SystemName": "NopStation.Plugin.Widgets.AnywhereSlider",
+      "Version": "4.80.1.1"
+    },
+    {
+      "SystemName": "NopStation.Theme.Berry",
+      "Version": "4.80.1.1"
+    },
+    {
+      "SystemName": "NopStation.Plugin.Widgets.BlogNews",
+      "Version": "4.80.1.0"
+    },
+    {
+      "SystemName": "NopStation.Plugin.Widgets.CategoryBanners",
+      "Version": "4.80.1.0"
+    },
+    {
+      "SystemName": "NopStation.Plugin.Widgets.MegaMenu",
+      "Version": "4.80.1.1"
+    },
+    {
+      "SystemName": "NopStation.Plugin.Widgets.OCarousels",
+      "Version": "4.80.1.1"
+    },
+    {
+      "SystemName": "NopStation.Plugin.Widgets.PictureZoom",
+      "Version": "4.80.1.0"
+    },
+    {
+      "SystemName": "NopStation.Plugin.Widgets.ProductRibbon",
+      "Version": "4.80.1.1"
+    },
+    {
+      "SystemName": "NopStation.Plugin.Widgets.ProductTabs",
+      "Version": "4.80.1.1"
+    },
+    {
+      "SystemName": "NopStation.Plugin.Widgets.QuickView",
+      "Version": "4.80.1.0"
+    },
+    {
+      "SystemName": "NopStation.Plugin.Widgets.VendorBanners",
+      "Version": "4.80.1.0"
+    }
+  ],
   "PluginNamesToUninstall": [],
   "PluginNamesToDelete": [],
   "PluginNamesToInstall": []

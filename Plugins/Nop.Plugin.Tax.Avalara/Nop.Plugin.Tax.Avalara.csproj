@@ -19,6 +19,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Controllers\TaxTransactionLogController.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Remove="logo.png" />
     <None Remove="plugin.json" />
     <None Remove="Views\Checkout\AddressValidation.cshtml" />

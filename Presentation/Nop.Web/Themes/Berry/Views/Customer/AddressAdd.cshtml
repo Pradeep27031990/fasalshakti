@@ -1,0 +1,55 @@
+﻿@model CustomerAddressEditModel
+@using Nop.Core.Domain.Seo
+@using Nop.Core.Domain.Common
+@using Nop.Core
+@using Nop.Services.Configuration
+@using Nop.Services.Media
+@inject ISettingService settingService
+@inject IPictureService pictureService
+@inject IStoreContext storeContext
+@inject Nop.Core.IWebHelper webHelper
+@inject SeoSettings seoSettings
+@inject CommonSettings commonSettings
+@{
+    Layout = "_ColumnsTwo";
+
+    //title
+    NopHtml.AddTitleParts(T("PageTitle.Account").Text);
+    NopHtml.AppendPageCssClassParts("html-account-page");
+    //page class
+    NopHtml.AppendPageCssClassParts("html-address-edit-page");
+}
+@section left
+    {
+    @await Component.InvokeAsync(typeof(CustomerNavigationViewComponent), new { selectedTabId = CustomerNavigationEnum.Addresses })
+}
+@{
+    var store = await storeContext.GetCurrentStoreAsync();
+    var breadcrumbBackgroundPictureId = await settingService.GetSettingByKeyAsync<int>("berrysettings.breadcrumbbackgroundpictureid", storeId: store.Id, loadSharedValueIfNotFound: true);
+    var breadcrumbBackgroundPictureUrl = await pictureService.GetPictureUrlAsync(breadcrumbBackgroundPictureId);
+}
+@section Breadcrumb {
+    <div class="breadcrumb" style="background-image: url('@breadcrumbBackgroundPictureUrl');">
+        <div class="page-title">
+            <h1>@T("Account.MyAccount") - @T("Account.CustomerAddresses.AddNew")</h1>
+        </div>
+    </div>
+}
+<form asp-route="CustomerAddressAdd" method="post">
+    <div class="page account-page address-edit-page">
+        <div class="page-title">
+            <h1>@T("Account.MyAccount") - @T("Account.CustomerAddresses.AddNew")</h1>
+        </div>
+        <div class="page-body">
+            <div asp-validation-summary="ModelOnly" class="message-error"></div>
+            @{
+                var dataDictAddress = new ViewDataDictionary(ViewData);
+                dataDictAddress.TemplateInfo.HtmlFieldPrefix = "Address";
+                @await Html.PartialAsync("_CreateOrUpdateAddress", Model.Address, dataDictAddress)
+            }
+            <div class="buttons">
+                <input type="submit" class="button-1 save-address-button" value="@T("Common.Save")" />
+            </div>
+        </div>
+    </div>
+</form>
